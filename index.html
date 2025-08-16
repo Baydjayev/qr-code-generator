@@ -13,21 +13,57 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 50%, #45B7D1 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
             text-align: center;
             max-width: 500px;
             width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header {
+            background: rgba(70, 130, 180, 0.1);
+            margin: -2rem -2rem 1.5rem -2rem;
+            padding: 1rem 2rem;
+            border-radius: 20px 20px 0 0;
+            border-bottom: 1px solid rgba(70, 130, 180, 0.2);
+        }
+
+        .username {
+            color: #4682B4;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(70, 130, 180, 0.2);
+            color: #666;
+            font-size: 0.85rem;
         }
 
         h1 {
@@ -55,18 +91,20 @@
         }
 
         button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
             color: white;
             border: none;
             padding: 12px 24px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .qr-container {
@@ -91,18 +129,22 @@
 
         .download-btn {
             margin-top: 1rem;
-            background: #28a745;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
             display: none;
         }
 
         .download-btn:hover {
-            background: #218838;
+            background: linear-gradient(135deg, #218838 0%, #1ba085 100%);
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>QR Code Generator</h1>
+        <div class="header">
+            <div class="username">👨‍💻 Baydjayev</div>
+            <h1>QR Code Generator</h1>
+        </div>
         <div class="input-group">
             <input type="text" id="textInput" placeholder="Matn yoki URL kiriting...">
         </div>
@@ -115,6 +157,10 @@
         </div>
         
         <button class="download-btn" id="downloadBtn" onclick="downloadQR()">QR Code-ni Yuklab Olish</button>
+        
+        <div class="footer">
+            <div>© 2025 Baydjayev | QR Code Generator</div>
+        </div>
     </div>
 
     <!-- QR Code kutubxonasi -->
